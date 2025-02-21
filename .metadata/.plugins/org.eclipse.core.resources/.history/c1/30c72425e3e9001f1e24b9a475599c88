@@ -1,0 +1,5 @@
+package com.supplychainmanagementsystem.dao;
+
+public class SupplierDao {
+
+}

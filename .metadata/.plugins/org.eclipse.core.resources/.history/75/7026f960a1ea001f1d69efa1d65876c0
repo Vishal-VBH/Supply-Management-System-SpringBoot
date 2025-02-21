@@ -1,0 +1,11 @@
+package com.supplychainmanagementsystem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.supplychainmanagementsystem.dao.SupplierDao;
+
+public class SupplierService {
+
+	@Autowired
+	private SupplierDao supplierdao;
+}

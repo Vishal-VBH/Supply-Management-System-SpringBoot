@@ -1,0 +1,17 @@
+package com.supplychainmanagementsystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.supplychainmanagementsystem.repository.SupplierRepository;
+import com.supplychainmanagementsystem.service.SupplierService;
+
+@RestController
+@RequestMapping("/api/supplier")
+public class SupplierController {
+
+	@Autowired
+	private SupplierService supplierservice;
+	
+	
+}

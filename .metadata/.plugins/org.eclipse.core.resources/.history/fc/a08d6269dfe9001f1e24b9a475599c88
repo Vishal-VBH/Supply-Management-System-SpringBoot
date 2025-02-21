@@ -1,0 +1,5 @@
+package com.supplychainmanagementsystem.entity;
+
+public class Product {
+
+}

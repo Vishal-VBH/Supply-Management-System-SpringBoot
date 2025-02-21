@@ -1,0 +1,18 @@
+package com.supplychainmanagementsystem.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.ManyToOne;
+
+public class Order {
+
+	private int id;
+	private LocalDate orderDate;
+	private double totalAmount;
+	private String status;
+	private String trackingNumber;
+	
+	@ManyToOne
+	private Customer customer;
+
+}

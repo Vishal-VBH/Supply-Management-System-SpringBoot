@@ -1,0 +1,28 @@
+package com.supplychainmanagementsystem.entity;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
+public class Order {
+
+	private int id;
+	private LocalDate orderDate;
+	private double totalAmount;
+	private String status;
+	private String trackingNumber;
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="customer_id")
+	private Customer customer;
+
+	@OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
+	private List<Product> products;
+}

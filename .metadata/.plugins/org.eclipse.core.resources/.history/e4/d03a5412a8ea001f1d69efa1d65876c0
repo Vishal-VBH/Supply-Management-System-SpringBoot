@@ -1,0 +1,23 @@
+package com.supplychainmanagementsystem.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import com.supplychainmanagementsystem.entity.Supplier;
+import com.supplychainmanagementsystem.repository.SupplierRepository;
+
+@Repository
+public class SupplierDao {
+
+	@Autowired
+	private SupplierRepository supplierRepository;
+	
+	public Supplier saveSupplier(Supplier supplier) {
+		supplierRepository.save(supplier);
+		return supplier;
+	}
+	
+	public Supplier updateSupplier(Supplier supplier) {
+		supplierRepository.save(supplier);
+		return supplier;
+	}
+}

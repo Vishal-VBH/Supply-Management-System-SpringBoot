@@ -1,0 +1,45 @@
+package com.supplychainmanagementsystem.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.supplychainmanagementsystem.dao.OrderDao;
+import com.supplychainmanagementsystem.dto.ResponseStructure;
+import com.supplychainmanagementsystem.entity.Order;
+import com.supplychainmanagementsystem.entity.Product;
+import com.supplychainmanagementsystem.exceptionpackage.NoRecordFoundException;
+
+@Service
+public class OrderService {
+	
+	@Autowired
+	private OrderDao orderdao;
+	
+	public ResponseEntity<ResponseStructure<Order>> createOrder(Order order){
+		Order recieveorder=orderdao.createOrder(order);
+		ResponseStructure<Order> structure= new ResponseStructure<Order>();
+		structure.setStatuscode(HttpStatus.CREATED.value());
+		structure.setMessage("Order creation is successfull");
+		structure.setData(recieveorder);
+		return new ResponseEntity<ResponseStructure<Order>>(structure,HttpStatus.CREATED);
+	}
+	
+	public ResponseEntity<ResponseStructure<List<Order>>> getAllOrders(){
+		List<Order> productlist=productdao.getAllProducts();
+		ResponseStructure<List<Order>> structure= new ResponseStructure<List<Order>>();
+		if(!productlist.isEmpty()) {
+		structure.setStatuscode(HttpStatus.CREATED.value());
+		structure.setMessage("All Order fetched successfully");
+		structure.setData(productlist);
+		return new ResponseEntity<ResponseStructure<List<Product>>>(structure,HttpStatus.CREATED);
+		}
+		else {
+			throw new NoRecordFoundException();
+		}
+	}
+
+}

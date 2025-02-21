@@ -1,0 +1,28 @@
+package com.supplychainmanagementsystem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.supplychainmanagementsystem.dao.ProductDao;
+import com.supplychainmanagementsystem.dto.ResponseStructure;
+import com.supplychainmanagementsystem.entity.Product;
+
+@Service
+public class ProductService {
+
+	@Autowired
+	private ProductDao productdao;
+	
+	
+	public ResponseEntity<ResponseStructure<Product>> addProduct(Product product){
+		productdao.addProduct(product);
+		ResponseStructure<Product> structure= new ResponseStructure<Product>();
+		structure.setStatuscode(HttpStatus.CREATED.value());
+		structure.setMessage("Added product successfully");
+		structure.setData(product);
+		return new ResponseEntity<ResponseStructure<Product>>(structure,HttpStatus.CREATED);
+	}
+	
+}

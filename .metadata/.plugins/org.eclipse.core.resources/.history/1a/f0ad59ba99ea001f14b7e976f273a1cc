@@ -1,0 +1,5 @@
+package com.supplychainmanagementsystem.exceptionpackage;
+
+public class NoRecordFoundException {
+
+}

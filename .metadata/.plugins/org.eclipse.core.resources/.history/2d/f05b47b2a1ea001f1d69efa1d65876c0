@@ -1,0 +1,26 @@
+package com.supplychainmanagementsystem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import com.supplychainmanagementsystem.dao.SupplierDao;
+import com.supplychainmanagementsystem.dto.ResponseStructure;
+import com.supplychainmanagementsystem.entity.Supplier;
+
+public class SupplierService {
+
+	@Autowired
+	private SupplierDao supplierdao;
+	
+	public ResponseEntity<ResponseStructure<Supplier>> saveSupplier(Supplier supplier)
+	{
+		supplierdao.saveSupplier(supplier);
+		ResponseStructure<Supplier> structure=new ResponseStructure<Supplier>();
+		structure.setStatuscode(HttpStatus.CREATED.value());
+		structure.setMessage("supplier record saved successfully");
+		structure.setData(supplier);
+		
+		return new ResponseEntity<ResponseStructure<Supplier>>(structure,HttpStatus.CREATED);
+	}
+}

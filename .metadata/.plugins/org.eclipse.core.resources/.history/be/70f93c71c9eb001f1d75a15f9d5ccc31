@@ -1,0 +1,20 @@
+package com.supplychainmanagementsystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.supplychainmanagementsystem.dao.OrderDao;
+import com.supplychainmanagementsystem.repository.OrderRepository;
+
+@RestController
+@RequestMapping("/api/order")
+public class OrderController {
+
+	@Autowired
+	private OrderDao orderdao;
+	
+	
+	
+	
+}

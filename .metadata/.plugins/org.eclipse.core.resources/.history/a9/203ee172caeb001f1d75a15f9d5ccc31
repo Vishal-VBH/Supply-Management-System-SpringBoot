@@ -1,0 +1,27 @@
+package com.supplychainmanagementsystem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.supplychainmanagementsystem.dao.OrderDao;
+import com.supplychainmanagementsystem.dto.ResponseStructure;
+import com.supplychainmanagementsystem.entity.Order;
+
+@Service
+public class OrderService {
+	
+	@Autowired
+	private OrderDao orderdao;
+	
+	public ResponseEntity<ResponseStructure<Order>> createOrder(Order order){
+		Order recieveorder=orderdao.createOrder(order);
+		ResponseStructure<Order> structure= new ResponseStructure<Order>();
+		structure.setStatuscode(HttpStatus.CREATED.value());
+		structure.setMessage("Order creation is successfull");
+		structure.setData(recieveorder);
+		return new ResponseEntity<ResponseStructure<Order>>(structure,HttpStatus.CREATED);
+	}
+
+}
